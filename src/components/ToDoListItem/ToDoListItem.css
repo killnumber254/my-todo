@@ -1,0 +1,29 @@
+.todo-list-item {
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+}
+.todo-list-item-label {
+  text-align: left;
+  width: 70%;
+  cursor: pointer;
+  user-select: none;
+}
+.todo-list-item.important {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-weight: normal;
+  color: #0054fc;
+}
+
+.todo-list-item.done .todo-list-item-label {
+  text-decoration: line-through;
+}
+
+.btnImportat {
+  border: none;
+  width: 19px;
+  height: 19px;
+  background: url("./check.svg") no-repeat;
+}
