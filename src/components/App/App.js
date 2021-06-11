@@ -40,10 +40,6 @@ class App extends Component {
     });
   };
 
-  inputItem = (e) => {
-    this.setState({ value: e.target.value });
-  };
-
   onToggleProperty = (arr, id, propName) => {
     const idx = arr.findIndex((el) => el.id === id);
     const oldItem = arr[idx];
@@ -71,7 +67,7 @@ class App extends Component {
     return (
       <div className="App">
         <ToDoHeader />
-        <ToDoInput addItem={this.addItem} />
+        <ToDoInput addItem={this.addItem} inputItem={this.inputItem} />
         <div className="cards">
           <div className="card">
             <TodoList

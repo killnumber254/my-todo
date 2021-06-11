@@ -7,14 +7,17 @@ class ToDoInput extends Component {
     super(props);
     this.state = {
       value: "",
+      message: "",
     };
   }
 
   addItem = () => {
     const { value } = this.state;
-    if (value) {
+    if (value.length >= 5) {
       this.props.addItem(value);
-      this.setState({ value: "" });
+      this.setState({
+        value: "",
+      });
     }
   };
 
@@ -27,8 +30,6 @@ class ToDoInput extends Component {
       <div className="input-group mb-3">
         <input
           className="form-control"
-          aria-label="Введите Задачу"
-          aria-describedby="button-addon2"
           onChange={this.handChange}
           value={this.state.value}
           type="text"
