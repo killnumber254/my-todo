@@ -7,6 +7,7 @@ class ToDoListItem extends Component {
       this.props;
 
     let ClassNames = "todo-list-item";
+
     if (important === true) {
       ClassNames += " important";
     } else if (done === true) {

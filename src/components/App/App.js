@@ -4,13 +4,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import TodoList from "../TodoList";
 import ToDoHeader from "../ToDoHeader";
 import ToDoInput from "../ToDoInput";
+import ItemStatus from "../ItemStatus";
 
 class App extends Component {
-  maxId = 100;
+  maxId = 1;
   state = {
     todoData: [],
+    filter: "all",
   };
 
+  filter = (items, filter) => {
+    switch (filter) {
+      case "all":
+        return items;
+      case "active":
+        return items.filter((item) => !item.done);
+      case "done":
+        return items.filter((item) => item.done);
+      default:
+        return items;
+    }
+  };
+
+  onFilter = (filter) => {
+    this.setState({ filter });
+  };
   createAddItem = (text) => {
     return {
       text,
@@ -64,14 +82,24 @@ class App extends Component {
   };
 
   render() {
+    const { todoData, filter } = this.state;
+    console.log(todoData);
+    const visitedToDo = this.filter(todoData, filter);
+    console.log(visitedToDo);
     return (
       <div className="App">
         <ToDoHeader />
-        <ToDoInput addItem={this.addItem} inputItem={this.inputItem} />
+        <ItemStatus filter={this.filter} onFilter={this.onFilter} />
+        <ToDoInput
+          addItem={this.addItem}
+          inputItem={this.inputItem}
+          onToggleImportant={this.onToggleImportant}
+          onToggleDone={this.onToggleDone}
+        />
         <div className="cards">
           <div className="card">
             <TodoList
-              list={this.state.todoData}
+              list={visitedToDo}
               onDelete={this.deleteItem}
               onToggleImportant={this.onToggleImportant}
               onToggleDone={this.onToggleDone}

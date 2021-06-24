@@ -7,7 +7,6 @@ class ToDoInput extends Component {
     super(props);
     this.state = {
       value: "",
-      message: "",
     };
   }
 
@@ -26,6 +25,7 @@ class ToDoInput extends Component {
   };
 
   render() {
+    //console.log(onToggleDone);
     return (
       <div className="input-group mb-3">
         <input

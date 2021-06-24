@@ -3,6 +3,7 @@ import ToDoListItem from "../ToDoListItem";
 import "./TodoList.css";
 
 const TodoList = ({ list, onDelete, onToggleImportant, onToggleDone }) => {
+  console.log(list);
   const element = list.map((item) => {
     const { id, ...itemTodo } = item;
     return (
