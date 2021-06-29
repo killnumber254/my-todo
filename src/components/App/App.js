@@ -18,7 +18,7 @@ class App extends Component {
       case "all":
         return items;
       case "active":
-        return items.filter((item) => !item.done);
+        return items.filter((item) => item.important);
       case "done":
         return items.filter((item) => item.done);
       default:
